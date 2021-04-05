@@ -1,0 +1,4 @@
+<%= simple_form_for [@user, @booking] do |f| %>
+  <%= f.association :walker %>
+  <%= f.submit "Confirm booking", class: "btn btn-primary" %>
+<% end %>
