@@ -1,24 +1,28 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    # @bookings = Booking.all
+    @bookings = policy_scope(Booking)
   end
 
   def show
     @booking = Booking.find(booking_params)
     @booking.user = current_user
     @booking.walker = User.find(1)
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
     @user = current_user
     @booking.user = current_user
+    authorize @booking
   end
 
   def create
     @user = current_user
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    authorize @booking
 
     if @booking.save
 
@@ -30,10 +34,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
-
-
-
 
   private
 
