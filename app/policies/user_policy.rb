@@ -4,4 +4,23 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def update?
+    true
+  end
+
+  def edit?
+    true
+  end
+
+  def edit_schedule?
+    true
+  end
 end
