@@ -1,4 +1,7 @@
 <%= simple_form_for [@user, @booking] do |f| %>
   <%= f.association :walker %>
+  <%= f.input :pet, collection: ["Labrador Retriever", "German Shepherd",  "Golden Retriever", "Beagle", "French Bulldog", "Yorkshire Terrier", "Poodle"] %>
   <%= f.submit "Confirm booking", class: "btn btn-primary" %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
 <% end %>
