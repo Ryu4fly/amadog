@@ -3,9 +3,11 @@
     <%   @bookings.each do |booking| %>
       <li> Your walker is :<%= booking.walker  %></li>
       <li> For your :<%= booking.pet  %></li>
-      <li><%= link_to user_bookings_path %></li>
-      <li> Starts at <%= booking.start_date %> </li>
-      <li> Ends at <%= booking.end_date %> </li>
+      <li> On <%= booking.date %> </li>
+      <li> Starts at <%= booking.starting_time %> </li>
+      <li> Ends at <%= booking.end_time %> </li>
+      <li> Your pick up address is <%= booking.address %> </li>
+      <li><%= link_to user_bookings_path(booking) %></li>
     <% end %>
   </ul>
 </div>
