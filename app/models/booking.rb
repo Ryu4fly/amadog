@@ -4,6 +4,8 @@ class Booking < ApplicationRecord
   belongs_to :walker, class_name: "User"
 
   validates :pet, presence: true, inclusion: { in: DOGBREEDS }
-  validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :date, presence: true
+  validates :starting_time, presence: true
+  validates :end_time, presence: true
+  validates :address, presence: true
 end

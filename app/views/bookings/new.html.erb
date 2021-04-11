@@ -1,7 +1,13 @@
 <%= simple_form_for [@user, @booking] do |f| %>
   <%= f.association :walker %>
   <%= f.input :pet, collection: ["Labrador Retriever", "German Shepherd",  "Golden Retriever", "Beagle", "French Bulldog", "Yorkshire Terrier", "Poodle"] %>
+  <%= f.input :date, as: :date, html5: true %>
+  <%= f.input :starting_time, as: :time, html5: true %>
+  <%= f.input :end_time, as: :time, html5: true %>
+  <h2>Your address, or a specific pick up location
+  </h2>
+  <%= f.input :address, as: :string, html5: true %>
+  <h2>Please put any comment</h2>
+  <%= f.input :comment, as: :string, html5: true %>
   <%= f.submit "Confirm booking", class: "btn btn-primary" %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
 <% end %>
