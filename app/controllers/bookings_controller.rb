@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
     # @bookings = Booking.all
     @bookings = policy_scope(Booking)
     @user = current_user
+    if Rails.env.production?
+      @country = request.location.country_code
+      @city = request.location.city
+    end
   end
 
   def show
