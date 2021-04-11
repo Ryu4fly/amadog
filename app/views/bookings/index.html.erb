@@ -7,7 +7,7 @@
       <li> Starts at <%= booking.starting_time %> </li>
       <li> Ends at <%= booking.end_time %> </li>
       <li> Your pick up address is <%= booking.address %> </li>
-      <li><%= link_to user_bookings_path(booking) %></li>
+      <li><%= link_to booking, user_booking_path(@user, booking) %></li>
     <% end %>
   </ul>
 </div>
