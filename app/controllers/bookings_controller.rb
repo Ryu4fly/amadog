@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   def index
+
     # @bookings = Booking.all
     @bookings = policy_scope(Booking)
     @user = current_user
@@ -12,7 +13,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(booking_params)
     @booking.user = current_user
-    @booking.walker = User.find(1)
+    @booking.walker = User.find(booking_params)
     authorize @booking
   end
 
@@ -41,6 +42,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     authorize @booking
+
   end
 
   private
