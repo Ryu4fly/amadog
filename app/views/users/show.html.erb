@@ -1,0 +1,7 @@
+<h1> <%= @user.username %> </h1>
+<%= link_to 'Leave a review', new_user_review_path(@user) %>
+<ul class="list-group">
+  <% @user.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.comment %></li>
+  <% end %>
+</ul>

@@ -1,3 +1,5 @@
+<h1>Your booking </h1>
 <h2>Your name : <%= @booking.walker %></h2>
 <h2>Your walker is: <%= @booking.user %></h2>
+<h2> <%= link_to 'Go to your walker profile', user_path(@booking.walker)%> </h2>
 <h2>Booking for your <%= @booking.pet %> </h2>
