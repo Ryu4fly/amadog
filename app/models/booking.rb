@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  DOGBREEDS = ["Labrador Retriever", "German Shepherd",  "Golden Retriever", "Beagle", "French Bulldog", "Yorkshire Terrier", "Poodle"]
+  DOGBREEDS = ["Labrador Retriever", "German Shepherd", "Golden Retriever", "Beagle", "French Bulldog", "Yorkshire Terrier", "Poodle"]
   belongs_to :user
   belongs_to :walker, class_name: "User"
 
