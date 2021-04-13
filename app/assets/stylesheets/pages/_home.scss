@@ -5,7 +5,14 @@
   .dark-layer {
     height: 100vh;
     width: 100vw;
-    background-color: black;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .logo {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    transform: translate(-5%, -10%);
   }
   .dog-sm-img {
     height: 100vh;
@@ -26,7 +33,7 @@
     display: flex;
     align-items: center;
     .line {
-      height: 1px;
+      height: 2px;
       width: 100vw;
       background-color: #FF731E;
     }
@@ -41,6 +48,9 @@
     text-align: center;
     p {
       color: white;
+    }
+    .bottom-text{
+      padding: 6vw;
     }
   }
   .content-paw {
