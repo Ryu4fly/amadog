@@ -1,11 +1,16 @@
 .landing-main {
   height: 100vh;
   width: 100vw;
+  display: flex;
+  .dark-layer {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+  }
   .dog-sm-img {
     height: 100vh;
     width: 100vw;
     object-fit: cover;
-    transform: translate(0%, 0%);
   }
 }
 
@@ -23,12 +28,24 @@
     height: 40vh;
     width: 100vw;
     background-color: #FF731E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .content-paw {
     height: 30vh;
     width: 100vw;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .paw {
+      height: 20vh;
+      min-width: 40vw;
+    }
   }
+
 }
 // Media Queries
 @media (max-width: 1200px) {
