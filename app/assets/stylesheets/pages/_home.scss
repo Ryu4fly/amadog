@@ -1,1 +1,47 @@
-// Specific CSS for your home-page
+.landing-main {
+  height: 100vh;
+  width: 100vw;
+  .dog-sm-img {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    transform: translate(0%, 0%);
+  }
+}
+
+.landing-info {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  .divider {
+    height: 10vh;
+    width: 100vw;
+    background-color: white;
+  }
+  .content {
+    height: 40vh;
+    width: 100vw;
+    background-color: #FF731E;
+  }
+  .content-paw {
+    height: 30vh;
+    width: 100vw;
+    background-color: white;
+  }
+}
+// Media Queries
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
