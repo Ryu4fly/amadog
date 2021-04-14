@@ -1,1 +1,95 @@
-// Specific CSS for your home-page
+.landing-main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  .dark-layer {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20%;
+  }
+  button {
+    font-size: 1.5em;
+    height: 20vw;
+    width: 40vw;
+    border-radius: 48px;
+    border-color: #FF731E;
+  }
+  .logo {
+    width: 100vw;
+    min-height: 40vh;
+    position: absolute;
+    transform: translate(-5%, -10%);
+  }
+  .dog-sm-img {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+  }
+}
+
+.landing-info {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  .divider {
+    height: 10vh;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    .line {
+      height: 2px;
+      width: 100vw;
+      background-color: #FF731E;
+    }
+  }
+  .content {
+    height: 40vh;
+    width: 100vw;
+    background-color: #FF731E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    p {
+      color: white;
+    }
+    .bottom-text{
+      padding: 6vw;
+    }
+  }
+  .content-paw {
+    height: 30vh;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .paw {
+      height: 20vh;
+      min-width: 40vw;
+    }
+  }
+
+}
+// Media Queries
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
