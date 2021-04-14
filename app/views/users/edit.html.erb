@@ -1,0 +1,7 @@
+<%= simple_form_for @user, url: user_path(@user) do |f| %>
+  <%= f.input :username %>
+  <%= f.input :bio, :input_html => {:rows => 7}  %>
+  <%= f.input :address %>
+  <%= f.input :pet, collection: @pets%>
+  <%= f.button :submit, "Confirm details" %>
+<% end %>
