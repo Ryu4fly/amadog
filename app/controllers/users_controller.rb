@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def index
     @users = policy_scope(User)
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
   end
 
   def show
