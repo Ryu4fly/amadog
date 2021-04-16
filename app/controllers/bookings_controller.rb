@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
         lat: flat.latitude,
         lng: flat.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
-        # image_url: helpers.asset_url('to do: add image file from assets')
+        # image_url: helpers.asset_url('option: add image file from assets')
       }
     end
     if Rails.env.production?
