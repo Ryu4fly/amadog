@@ -6,7 +6,7 @@ class UsersController < ApplicationController
         lat: flat.latitude,
         lng: flat.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { user: user })
-        # image_url: helpers.asset_url('to do: add image file from assets')
+        # image_url: helpers.asset_url('optional: add image file from assets')
       }
     end
   end
