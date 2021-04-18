@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def index
     @users = policy_scope(User)
-    @markers = @flats.geocoded.map do |flat|
+    @markers = @users.geocoded.map do |user|
       {
-        lat: flat.latitude,
-        lng: flat.longitude,
+        lat: user.latitude,
+        lng: user.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { user: user })
         # image_url: helpers.asset_url('optional: add image file from assets')
       }
