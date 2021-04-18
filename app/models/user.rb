@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
   validate :validate_username
 
+  has_one_attached :avatar
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -29,7 +31,7 @@ class User < ApplicationRecord
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
       where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
-    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+    elsif conditions.key?(:username) || conditions.key?(:email)
       where(conditions.to_h).first
     end
   end

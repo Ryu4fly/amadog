@@ -35,11 +35,12 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'faker'
 gem 'pundit'
+gem 'geocoder', '~> 1.6', '>= 1.6.6'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
-  gem 'geocoder', '~> 1.6', '>= 1.6.6'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
