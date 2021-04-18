@@ -24,6 +24,7 @@
     min-height: 40vh;
     position: absolute;
     transform: translate(-5%, -10%);
+    z-index: -1;
   }
   .dog-sm-img {
     height: 100vh;
