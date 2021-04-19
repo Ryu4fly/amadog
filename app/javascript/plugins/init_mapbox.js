@@ -15,7 +15,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/satellite-v9' // here you can change style of the map
+      style: "mapbox://styles/mapbox/streets-v10" // here you can change style of the map
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
