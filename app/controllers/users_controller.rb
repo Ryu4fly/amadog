@@ -46,4 +46,26 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :bio, :username, :address, :pet)
   end
+  
+  def markers
+    if !@users.nil?
+      @users.geocoded.map do |user|
+        {
+          lat: user.latitude,
+          lng: user.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+          # image_url: helpers.asset_url('optional: add image file from assets')
+        }
+      end
+    else
+      @user.geocode.map do |user|
+        {
+          lat: user.latitude,
+          lng: user.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+          # image_url: helpers.asset_url('optional: add image file from assets')
+        }
+      end
+    end
+  end
 end
