@@ -16,7 +16,7 @@ User.create(
   email: "1@1.com",
   password: "123456",
   username: "Test",
-  address: "123 Fake Street",
+  address: "Narita Airport, Narita, Chiba",
   bio: "Test bio"
 )
 
