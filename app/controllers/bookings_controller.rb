@@ -3,10 +3,10 @@ class BookingsController < ApplicationController
     # @bookings = Booking.all
     @bookings = policy_scope(Booking)
     @user = current_user
-    @markers = @flats.geocoded.map do |flat|
+    @markers = @user.geocode.map do |user|
       {
-        lat: flat.latitude,
-        lng: flat.longitude,
+        lat: user.latitude,
+        lng: user.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
         # image_url: helpers.asset_url('option: add image file from assets')
       }
