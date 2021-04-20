@@ -34,9 +34,10 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.walker = @user
     authorize @booking
 
     if @booking.save
