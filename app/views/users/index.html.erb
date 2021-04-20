@@ -1,8 +1,12 @@
 <h1>Now Available to Walk Your Dog</h1>
 <ul class="list-group">
   <% @users.each do |user| %>
+    <%# map still shows current_user on line 13 %>
+    <%# if user != current_user %>
     <li class="list-group-item"><%= link_to user.username, user_path(user) %> <%= user.address %></li>
+    <%# end %>
   <% end %>
+
 </ul>
 <br /><div id="map"
      style="width: 100%; height: 600px;"
