@@ -57,15 +57,15 @@ class UsersController < ApplicationController
           # image_url: helpers.asset_url('optional: add image file from assets')
         }
       end
-    else
-      @user.geocode.map do |user|
-        {
-          lat: user.first,
-          lng: user.last,
-          infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+    #else
+    #  @user.geocode.map do |user|
+    #    {
+    #      lat: user.first,
+    #      lng: user.last,
+    #      infoWindow: render_to_string(partial: "info_window", locals: { user: user })
           # image_url: helpers.asset_url('optional: add image file from assets')
-        }
-      end
+    #    }
+    #  end
     end
   end
 end
