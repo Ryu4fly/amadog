@@ -5,7 +5,8 @@
     <li class="list-group-item"><%= review.comment %></li>
   <% end %>
 </ul>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Book this walker now', new_user_booking_path(@user) %>
+<%= link_to 'Back to walkers search', users_path %>
 <%# Map here for debugging purposes currently %>
 <br /><div id="map"
      style="width: 100%; height: 600px;"

@@ -3,14 +3,14 @@ class BookingsController < ApplicationController
     # @bookings = Booking.all
     @bookings = policy_scope(Booking)
     @user = current_user
-    @markers = @user.geocode.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
-        # image_url: helpers.asset_url('option: add image file from assets')
-      }
-    end
+    #@markers = @user.geocode.map do |user|
+    #  {
+    #    lat: user.latitude,
+    #    lng: user.longitude,
+    #    infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
+    #    # image_url: helpers.asset_url('option: add image file from assets')
+    #  }
+    #end
     if Rails.env.production?
       @country = request.location.country_code
       @city = request.location.city
@@ -18,18 +18,19 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(booking_params)
+    @booking = Booking.find(params[:id])
     @booking.user = current_user
-    @booking.walker = User.find(booking_params)
+    #@booking.walker = User.find(booking_params)
     authorize @booking
   end
 
   def new
     @booking = Booking.new
-    @user = current_user
-    @booking.user = current_user
-    @booking.pet =
-      authorize @booking
+    #@user = current_user
+    #@booking.user = current_user
+    #@booking.pet =
+    @user = User.find(params[:user_id])
+    authorize @booking
   end
 
   def create

@@ -2,8 +2,8 @@
   <h1><%= link_to 'NewBooking', new_user_booking_path(current_user.id)%>   </h1>
   <ul>
     <%   @bookings.each do |booking| %>
-      <li> Your walker is :<%= booking.walker  %></li>
-      <li> For your :<%= booking.pet  %></li>
+      <li> Your walker is: <%= booking.walker.username  %></li>
+      <li> For your: <%= booking.pet  %></li>
       <li> On <%= booking.date %> </li>
       <li> Starts at <%= booking.starting_time %> </li>
       <li> Ends at <%= booking.end_time %> </li>
