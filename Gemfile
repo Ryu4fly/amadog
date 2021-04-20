@@ -37,6 +37,7 @@ gem 'faker'
 gem 'pundit'
 gem 'geocoder', '~> 1.6', '>= 1.6.6'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'aws-sdk-s3'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
