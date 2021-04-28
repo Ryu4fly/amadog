@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @marker = markers
+    # @marker = markers
     authorize @user
   end
 
