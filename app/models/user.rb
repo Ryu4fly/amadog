@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validate :validate_username
 
   has_one_attached :avatar
+  has_one_attached :pet_avatar
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -30,7 +31,8 @@ class User < ApplicationRecord
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value",
+                                    { value: login.downcase }]).first
     elsif conditions.key?(:username) || conditions.key?(:email)
       where(conditions.to_h).first
     end
