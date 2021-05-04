@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = policy_scope(User)
     @markers = markers
+    @user = current_user
   end
 
   def show
@@ -57,15 +58,15 @@ class UsersController < ApplicationController
           # image_url: helpers.asset_url('optional: add image file from assets')
         }
       end
-    #else
-    #  @user.geocode.map do |user|
-    #    {
-    #      lat: user.first,
-    #      lng: user.last,
-    #      infoWindow: render_to_string(partial: "info_window", locals: { user: user })
-          # image_url: helpers.asset_url('optional: add image file from assets')
-    #    }
-    #  end
+      #else
+      #  @user.geocode.map do |user|
+      #    {
+      #      lat: user.first,
+      #      lng: user.last,
+      #      infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+      # image_url: helpers.asset_url('optional: add image file from assets')
+      #    }
+      #  end
     end
   end
 end

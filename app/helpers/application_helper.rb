@@ -6,4 +6,6 @@ module ApplicationHelper
       gravatar_image_url(user.email, size: size)
     end
   end
+
+
 end
