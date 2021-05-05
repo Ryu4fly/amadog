@@ -15,7 +15,7 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
 
   attr_writer :login
 
@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   def login
     @login || username || email
+  end
+  def gravatar_url
+    gravatar_id = Digest::MD5::hexdigest(email).downcase
+    "https://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
   def self.find_for_database_authentication(warden_conditions)
