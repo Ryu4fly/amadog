@@ -27,7 +27,6 @@ class RoomsController < ApplicationController
   def create
     @rooms = policy_scope(Room)
 
-
     @user = current_user
     @room = Room.new permitted_parameters
     authorize @room
