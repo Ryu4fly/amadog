@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @room = Room.new
+    authorize @room
     # @marker = markers
     authorize @user
   end
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :bio, :avatar, :username, :address, :pet)
+    params.require(:user).permit(:id, :bio, :avatar, :username, :address, :pet, :room)
   end
 
   def markers

@@ -19,9 +19,9 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
-
     @user = current_user
     authorize @room
+    # @other_user = User.find(params[:id])
   end
 
   def create
@@ -31,6 +31,10 @@ class RoomsController < ApplicationController
     @user = current_user
     @room = Room.new permitted_parameters
     authorize @room
+    @idarray = []
+    @idarray << @user.id
+    # @other_user = User.find(params)
+    # @idarray << @other_user.id
 
     if @room.save
       flash[:success] = "Room #{@room.name} was created successfully"
@@ -59,13 +63,12 @@ class RoomsController < ApplicationController
   def load_entities
     @rooms = policy_scope(Room)
 
-
     @rooms = Room.all
     @room = Room.find(params[:id]) if params[:id]
   end
 
   def permitted_parameters
-    params.require(:room).permit(:name)
+    params.require(:room).permit(:id)
   end
 
 
