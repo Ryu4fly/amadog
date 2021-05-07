@@ -24,7 +24,8 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     # @booking.user = current_user
     #@booking.walker = User.find(booking_params)
-    # @markers = markers
+    @users = User.where(username: current_user.username)
+    @markers = markers
     authorize @booking
   end
 
