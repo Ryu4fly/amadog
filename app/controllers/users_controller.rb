@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @room = Room.new
+    @result = request.safe_location
     authorize @room
     # @marker = markers
     authorize @user

@@ -5,6 +5,7 @@
     <li class="list-group-item"><%= review.comment %></li>
   <% end %>
 </ul>
+<p><%= @request %></p>
 <% if @user == current_user %>
   <%= link_to 'Your bookings', user_bookings_path(@user) %>
 <% end %>

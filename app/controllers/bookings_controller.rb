@@ -3,8 +3,9 @@ class BookingsController < ApplicationController
     # @bookings = Booking.all
     @bookings = policy_scope(Booking)
     @user = current_user
-    @users = User.all
+    @users = User.where(username: @user.username)
     @markers = markers
+    # raise
     #@markers = @user.geocode.map do |user|
     #  {
     #    lat: user.latitude,
