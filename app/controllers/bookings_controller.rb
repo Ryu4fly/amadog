@@ -6,14 +6,6 @@ class BookingsController < ApplicationController
     @users = User.where(username: @user.username)
     @markers = markers
     # raise
-    #@markers = @user.geocode.map do |user|
-    #  {
-    #    lat: user.latitude,
-    #    lng: user.longitude,
-    #    infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
-    #    # image_url: helpers.asset_url('option: add image file from assets')
-    #  }
-    #end
     if Rails.env.production?
       @country = request.location.country_code
       @city = request.location.city
@@ -24,16 +16,15 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     # @booking.user = current_user
     #@booking.walker = User.find(booking_params)
-    @users = User.where(username: current_user.username)
-    @markers = markers
+    @bookings = Booking.where(user_id: current_user.id, walker_id: @booking.walker_id)
+    # @users = User.where(username: current_user.username)
+    # @markers = markers
+    @booking_markers = booking_markers
     authorize @booking
   end
 
   def new
     @booking = Booking.new
-    #@user = current_user
-    #@booking.user = current_user
-    #@booking.pet =
     @user = User.find(params[:user_id])
     authorize @booking
   end
@@ -60,15 +51,23 @@ class BookingsController < ApplicationController
   end
 
   def markers
-    # @users = []
-    # @users << @booking.walker
-    # @users << @booking.user
     @users.geocoded.map do |user|
       # if user != @user
         {
           lat: user.latitude,
           lng: user.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+          # image_url: helpers.asset_url('optional: add image file from assets')
+        }
+      # end
+    end
+  end
+  def booking_markers
+    @bookings.geocoded.map do |booking|
+        {
+          lat: booking.latitude,
+          lng: booking.longitude,
+          # infoWindow: render_to_string(partial: "info_window", locals: { user: user })
           # image_url: helpers.asset_url('optional: add image file from assets')
         }
       # end
