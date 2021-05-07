@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
     # @bookings = Booking.all
     @bookings = policy_scope(Booking)
     @user = current_user
+    @users = User.all
+    @markers = markers
     #@markers = @user.geocode.map do |user|
     #  {
     #    lat: user.latitude,
@@ -21,7 +23,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     # @booking.user = current_user
     #@booking.walker = User.find(booking_params)
-    @markers = markers
+    # @markers = markers
     authorize @booking
   end
 
@@ -56,16 +58,18 @@ class BookingsController < ApplicationController
   end
 
   def markers
-    @users = []
-    @users << @booking.walker
-    @users << @booking.user
+    # @users = []
+    # @users << @booking.walker
+    # @users << @booking.user
     @users.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
-        # image_url: helpers.asset_url('optional: add image file from assets')
-      }
+      # if user != @user
+        {
+          lat: user.latitude,
+          lng: user.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+          # image_url: helpers.asset_url('optional: add image file from assets')
+        }
+      # end
     end
   end
 end
