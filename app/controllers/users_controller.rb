@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :bio, :avatar, :username, :address, :pet, :room)
+    params.require(:user).permit(:id, :bio, :avatar, :username, :address, :pet, :pet_avatar, :room)
   end
 
   def markers
