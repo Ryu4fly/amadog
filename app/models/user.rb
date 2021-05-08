@@ -10,12 +10,13 @@ class User < ApplicationRecord
   validate :validate_username
 
   has_one_attached :avatar
+  has_one_attached :pet_avatar
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
 
   attr_writer :login
 
@@ -26,15 +27,17 @@ class User < ApplicationRecord
   def login
     @login || username || email
   end
+
   def gravatar_url
-    gravatar_id = Digest::MD5::hexdigest(email).downcase
+    gravatar_id = Digest::MD5.hexdigest(email).downcase
     "https://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value",
+                                    { value: login.downcase }]).first
     elsif conditions.key?(:username) || conditions.key?(:email)
       where(conditions.to_h).first
     end
