@@ -2,14 +2,11 @@ class RoomsController < ApplicationController
   before_action :load_entities
 
   def show
-
     @rooms = policy_scope(Room)
-
     @room_message = RoomMessage.new room: @room
     @room_messages = @room.room_messages.includes(:user)
     @user = current_user
     authorize @room
-
   end
 
   def index
@@ -21,7 +18,7 @@ class RoomsController < ApplicationController
     @room = Room.new
     @user = current_user
     authorize @room
-    # @other_user = User.find(params[:id])
+    @other_user = User.find(params[:user_id])
   end
 
   def create
@@ -29,15 +26,14 @@ class RoomsController < ApplicationController
 
     @user = current_user
     @room = Room.new permitted_parameters
+    @other_user = User.find(params[:user_id])
+    @room.sender = @user
+    @room.recipient = @other_user
     authorize @room
-    @idarray = []
-    @idarray << @user.id
-    # @other_user = User.find(params)
-    # @idarray << @other_user.id
 
     if @room.save
       flash[:success] = "Room #{@room.name} was created successfully"
-      redirect_to rooms_path
+      redirect_to room_path(@room)
     else
       render :new
       authorize @room
@@ -61,17 +57,16 @@ class RoomsController < ApplicationController
 
   def load_entities
     @rooms = policy_scope(Room)
-
     @rooms = Room.all
     @room = Room.find(params[:id]) if params[:id]
   end
 
   def permitted_parameters
-    params.require(:room).permit(:id)
+    params.permit(:user_id)
   end
 
 
-  def room_params
-    params.require(:room).permit(:user_id)
-  end
+  # def room_params
+  #   params.require(:room).permit(:user_id)
+  # end
 end
