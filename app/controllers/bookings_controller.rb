@@ -23,6 +23,11 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def ip
+    @geocoder_result = request.location
+    raise
+  end
+
   def new
     @booking = Booking.new
     @user = User.find(params[:user_id])
