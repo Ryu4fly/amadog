@@ -19,6 +19,8 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user_id: current_user.id, walker_id: @booking.walker_id)
     # @users = User.where(username: current_user.username)
     # @markers = markers
+    @geocoder_result = request.location
+    raise
     @booking_markers = booking_markers
     authorize @booking
   end
