@@ -9,6 +9,8 @@ User Location: <%= @country %><br />
 User City: <%= @city %><br />
 </p>
 
+<%# <%= button "Here I am", :controller => :bookings, :action => :ip, class: 'btn btn-danger' %>
+
 <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @booking_markers.to_json %>"
